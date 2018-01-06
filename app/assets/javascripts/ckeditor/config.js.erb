@@ -1,0 +1,135 @@
+/*
+ * Default CKEditor configuration
+ *
+ * Override this file to create your own customised configuration
+ * Reasons for overriding could include;
+ * - Adding/removing a plugin
+ * - Customising the toolbar
+ * - Adding widgets to HTML buttons plugin
+ *
+ **/
+
+CKEDITOR.editorConfig = function( config ) {
+  config.plugins =
+    // 'a11yhelp,' +
+    // 'basicstyles,' +
+    // 'bidi,' +
+    'blockquote,' +
+    'clipboard,' +
+    // 'colorbutton,' +
+    // 'colordialog,' +
+    // 'copyformatting,' +
+    'contextmenu,' +
+    'dialogadvtab,' +
+    'div,' +
+    'elementspath,' +
+    'enterkey,' +
+    'entities,' +
+    'filebrowser,' +
+    'find,' +
+    // 'flash,' +
+    'floatingspace,' +
+    'font,' +
+    'format,' +
+    // 'forms,' +
+    'horizontalrule,' +
+    // 'htmlwriter,' +
+    'image,' +
+    'iframe,' +
+    'indentlist,' +
+    'indentblock,' +
+    'justify,' +
+    'language,' +
+    'link,' +
+    'list,' +
+    'liststyle,' +
+    'magicline,' +
+    'maximize,' +
+    'newpage,' +
+    'pagebreak,' +
+    'pastefromword,' +
+    'pastetext,' +
+    // 'preview,' +
+    // 'print,' +
+    'removeformat,' +
+    'resize,' +
+    // 'save,' +
+    'selectall,' +
+    'showblocks,' +
+    'showborders,' +
+    // 'smiley,' +
+    'sourcearea,' +
+    'specialchar,' +
+    'stylescombo,' +
+    'tab,' +
+    'table,' +
+    'tableselection,' +
+    'tabletools,' +
+    'templates,' +
+    'toolbar,' +
+    'undo,' +
+    'wysiwygarea';
+
+  <%-
+    attachment_files_path = Ckeditor::Engine.routes.url_helpers.attachment_files_path
+    pictures_path = Ckeditor::Engine.routes.url_helpers.pictures_path
+  %>
+  /* Filebrowser routes */
+  config.filebrowserBrowseUrl = "<%= attachment_files_path %>"
+  config.filebrowserUploadUrl = "<%= attachment_files_path %>"
+  config.filebrowserFlashUploadUrl = "<%= attachment_files_path %>"
+  config.filebrowserFlashBrowseUrl = "<%= attachment_files_path %>"
+  config.filebrowserImageBrowseLinkUrl = "<%= pictures_path %>"
+  config.filebrowserImageBrowseUrl = "<%= pictures_path %>"
+  config.filebrowserImageUploadUrl = "<%= pictures_path %>"
+  config.filebrowserImageBrowseLinkUrl = "<%= pictures_path %>"
+
+  config.allowedContent = true;
+
+  // Toolbar groups configuration.
+  config.toolbarGroups = [
+  { name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
+  { name: 'styles', groups: [ 'styles' ] },
+  { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+  { name: 'colors', groups: [ 'colors' ] },
+  { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
+  { name: 'forms', groups: [ 'forms' ] },
+  '/',
+  { name: 'links', groups: [ 'links' ] },
+  { name: 'insert', groups: [ 'insert' ] },
+  { name: 'tools', groups: [ 'tools' ] },
+  { name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+  { name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
+  { name: 'others', groups: [ 'others' ] },
+  { name: 'about', groups: [ 'about' ] }
+  ];
+
+  config.removeButtons = 'Unlink,Cut,Copy,Paste,PasteText,PasteFromWord,Save,Templates,NewPage,Preview,Print,SelectAll,Scayt,Replace,Form,Checkbox,Radio,TextField,HiddenField,ImageButton,Button,Select,Textarea,Language,BidiRtl,BidiLtr,CreateDiv,PageBreak,Smiley,About,Styles,FontSize,Font';
+
+  config.skin = 'flat';
+  config.format_small = { element: 'small' };
+
+  config.format_tags = 'p;h2;h3;h4;h5;h6;pre;small;address;div';
+  config.extraPlugins = 'wordcount,autogrow,codemirror,embedjs';
+
+  config.autoGrow_maxHeight = 500;
+  config.autoGrow_bottomSpace = 20;
+
+  // Allow icon insertion
+  config.protectedSource.push( /<i class[\s\S]*?\>/g );
+  config.protectedSource.push( /<\/i>/g );
+  CKEDITOR.dtd.a.div = 1;
+
+  config.codemirror = {
+    // Whether or not to show the comment button on the toolbar
+    showCommentButton: false,
+    // Whether or not to show the uncomment button on the toolbar
+    showUncommentButton: false,
+    // Whether or not to show the format button on the toolbar
+    showFormatButton: false,
+    // Whether or not to show the search Code button on the toolbar
+    showSearchButton: false,
+    // Whether or not to show the showAutoCompleteButton button on the toolbar
+    showAutoCompleteButton: false
+  }
+};
