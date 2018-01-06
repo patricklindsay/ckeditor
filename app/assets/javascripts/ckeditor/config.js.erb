@@ -12,7 +12,7 @@
 CKEDITOR.editorConfig = function( config ) {
   config.plugins =
     // 'a11yhelp,' +
-    // 'basicstyles,' +
+     'basicstyles,' +
     // 'bidi,' +
     'blockquote,' +
     'clipboard,' +
@@ -104,7 +104,7 @@ CKEDITOR.editorConfig = function( config ) {
   { name: 'about', groups: [ 'about' ] }
   ];
 
-  config.removeButtons = 'Unlink,Cut,Copy,Paste,PasteText,PasteFromWord,Save,Templates,NewPage,Preview,Print,SelectAll,Scayt,Replace,Form,Checkbox,Radio,TextField,HiddenField,ImageButton,Button,Select,Textarea,Language,BidiRtl,BidiLtr,CreateDiv,PageBreak,Smiley,About,Styles,FontSize,Font';
+  config.removeButtons = 'Unlink,Cut,Copy,Paste,PasteText,PasteFromWord,Save,Templates,NewPage,Preview,Print,SelectAll,Scayt,Replace,Form,Checkbox,Radio,TextField,HiddenField,ImageButton,Button,Select,Textarea,Language,BidiRtl,BidiLtr,CreateDiv,PageBreak,Smiley,About,Styles,FontSize,Font,Superscript,Subscript,Indent,Outdent';
 
   config.skin = 'flat';
   config.format_small = { element: 'small' };
@@ -118,6 +118,7 @@ CKEDITOR.editorConfig = function( config ) {
   // Allow icon insertion
   config.protectedSource.push( /<i class[\s\S]*?\>/g );
   config.protectedSource.push( /<\/i>/g );
+  config.image_prefillDimensions = false;
   CKEDITOR.dtd.a.div = 1;
 
   config.codemirror = {
